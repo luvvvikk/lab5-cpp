@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    const int passengers = 240;
+    const int laz_cap = 40;
+    const int paz_cap = 30;
+
+    cout << "Можливі варіанти замовлення автобусів:" << endl;
+    int variants_count = 0;
+
+    for (int laz = 0; laz <= passengers / laz_cap; ++laz) {
+        int remaining = passengers - laz * laz_cap;
+        if (remaining % paz_cap == 0) {
+            int paz = remaining / paz_cap;
+            ++variants_count;
+            cout << "Варіант " << variants_count
+                 << ": ЛАЗ — " << laz << " шт., ПАЗ — " << paz << " шт." << endl;
+        }
+    }
+
+    return 0;
+}
